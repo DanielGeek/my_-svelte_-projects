@@ -31,7 +31,6 @@
 </button>
 
 <style lang="scss">
-	// @use '../styles/variables.scss';
 	button {
 		display: flex;
 		align-items: center;
