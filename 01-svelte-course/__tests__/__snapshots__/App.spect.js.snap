@@ -28,19 +28,7 @@ App {
     "on_disconnect": [],
     "on_mount": [],
     "props": {},
-    "root": <div>
-      <button
-        class="svelte-17m46ol"
-        data-testid="counter"
-      >
-        Clicks: 
-        0
-      </button>
-       
-      <h3>
-        You have clicked 0 times.
-      </h3>
-    </div>,
+    "root": <div />,
     "skip_bound": false,
     "update": [Function],
   },

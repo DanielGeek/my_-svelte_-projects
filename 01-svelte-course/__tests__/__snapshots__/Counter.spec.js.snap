@@ -10,8 +10,9 @@ Counter {
     "context": Map {},
     "ctx": [
       0,
-      "You have clicked 0 times.",
       [Function],
+      0,
+      undefined,
     ],
     "dirty": [
       -1,
@@ -31,23 +32,23 @@ Counter {
     ],
     "on_disconnect": [],
     "on_mount": [],
-    "props": {},
+    "props": {
+      "initialCount": 2,
+      "maxCount": 3,
+    },
     "root": <div>
       <button
-        class="svelte-17m46ol"
+        class="svelte-v63hfd"
         data-testid="counter"
       >
         Clicks: 
         0
       </button>
-       
-      <h3>
-        You have clicked 0 times.
-      </h3>
     </div>,
     "skip_bound": false,
     "update": [Function],
   },
+  "$$set": [Function],
   "$capture_state": [Function],
   "$inject_state": [Function],
 }

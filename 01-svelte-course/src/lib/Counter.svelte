@@ -15,7 +15,7 @@
 	}
 </script>
 
-<button on:click={increment} data-testid="count">Clicks: {count} </button>
+<button on:click={increment} data-testid="counter">Clicks: {count} </button>
 
 <style>
 	button {
