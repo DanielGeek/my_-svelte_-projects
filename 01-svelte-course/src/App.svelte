@@ -9,7 +9,7 @@
 </script>
 
 <!-- <Counter {...props} x="y" /> -->
-<Button>Button Text</Button>
+<Button size="small" shadow>Button Text</Button>
 
 <style>
 </style>
