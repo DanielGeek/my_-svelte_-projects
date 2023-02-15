@@ -1,25 +1,24 @@
 <script>
-  let count1 = 0;
-  let count2 = 0;
+	export let initialCount = 0;
+	export let maxCount = undefined;
 
-  function setCount2(x) {
-    count2 = x;
-  }
+	console.log($$props, $$restProps);
 
-  // 9. Reactive Statements
-  $: setCount2(count1);
-  $: string = `Count2 is ${count2}`;
+	// 9. Reactive Statements
+	// $: string = `Count2 is ${count2}`;
 
-  function increment1() {
-    count1 += 1;
-  }
+	let count = initialCount;
+
+	function increment() {
+		if (count === maxCount) return;
+		count += 1;
+	}
 </script>
 
-<button on:click={increment1} data-testid="counter1">Clicks: {count1}</button>
-<h3>{string}</h3>
+<button on:click={increment} data-testid="count">Clicks: {count} </button>
 
 <style>
-  button {
-    padding: 15px 20px;
-  }
+	button {
+		padding: 15px 20px;
+	}
 </style>
