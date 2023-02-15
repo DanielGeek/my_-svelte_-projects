@@ -16,6 +16,7 @@
 	class:size-sm={size === 'small'}
 	class:has-left={$$slots.leftContent}
 	class:shadow
+	{...$$restProps}
 >
 	{#if $$slots.leftContent}
 		<div
@@ -42,6 +43,10 @@
 		cursor: pointer;
 		.left-content {
 			margin-right: 10px;
+		}
+		&:disabled {
+			opacity: 0.6;
+			cursor: not-allowed;
 		}
 		&:hover {
 			background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0 0);
