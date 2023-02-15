@@ -11,9 +11,15 @@
 </script>
 
 <!-- <Counter {...props} x="y" /> -->
-<Button let:isLeftHovered size="small" shadow>
-	<div style:width="20px" slot="leftContent" let:x>
-		{x}
+<Button
+	on:click|once={(event) => {
+		alert(true);
+	}}
+	let:isLeftHovered
+	size="small"
+	shadow
+>
+	<div style:width="20px" slot="leftContent">
 		{#if isLeftHovered}
 			<FaAngellist />
 		{:else}
