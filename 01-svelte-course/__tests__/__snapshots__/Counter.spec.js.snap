@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter Snapshot 1`] = `
+Counter {
+  "$$": {
+    "after_update": [],
+    "before_update": [],
+    "bound": {},
+    "callbacks": {},
+    "context": Map {},
+    "ctx": [
+      0,
+      "You have clicked 0 times.",
+      [Function],
+    ],
+    "dirty": [
+      -1,
+    ],
+    "fragment": {
+      "c": [Function],
+      "d": [Function],
+      "i": [Function],
+      "l": [Function],
+      "m": [Function],
+      "o": [Function],
+      "p": [Function],
+    },
+    "not_equal": [Function],
+    "on_destroy": [
+      [Function],
+    ],
+    "on_disconnect": [],
+    "on_mount": [],
+    "props": {},
+    "root": <div>
+      <button
+        class="svelte-17m46ol"
+        data-testid="counter"
+      >
+        Clicks: 
+        0
+      </button>
+       
+      <h3>
+        You have clicked 0 times.
+      </h3>
+    </div>,
+    "skip_bound": false,
+    "update": [Function],
+  },
+  "$capture_state": [Function],
+  "$inject_state": [Function],
+}
+`;
