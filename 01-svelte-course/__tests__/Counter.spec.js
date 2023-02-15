@@ -18,7 +18,7 @@ describe('Counter', () => {
 		await button.click();
 		expect(button).toHaveTextContent('Clicks: 1');
 		expect(container.querySelector('h3')).toHaveTextContent(
-			'You have clicked 0 times.'
+			'You have clicked 1 times.'
 		);
 	});
 });
