@@ -8,6 +8,7 @@
 	import { v4 as uuid } from 'uuid';
 
 	let todoList;
+	let showList = true;
 
 	let todos = [
 		{
@@ -30,17 +31,15 @@
 
 	function handleAddTodo(event) {
 		event.preventDefault();
-		setTimeout(() => {
-			todos = [
-				...todos,
-				{
-					id: uuid(),
-					title: event.detail.title,
-					completed: false,
-				},
-			];
-			todoList.clearInput();
-		}, 1000);
+		todos = [
+			...todos,
+			{
+				id: uuid(),
+				title: event.detail.title,
+				completed: false,
+			},
+		];
+		todoList.clearInput();
 	}
 
 	function handleRemoveTodo(event) {
@@ -62,19 +61,19 @@
 	// };
 </script>
 
-<TodoList
-	{todos}
-	bind:this={todoList}
-	on:addtodo={handleAddTodo}
-	on:removetodo={handleRemoveTodo}
-	on:toggletodo={handleToggleTodo}
-/>
-
-<button
-	on:click={() => {
-		todoList.focusInput();
-	}}>Focus input</button
->
+<label>
+	<input type="checkbox" bind:checked={showList} />
+	Show/Hide list
+</label>
+{#if showList}
+	<TodoList
+		{todos}
+		bind:this={todoList}
+		on:addtodo={handleAddTodo}
+		on:removetodo={handleRemoveTodo}
+		on:toggletodo={handleToggleTodo}
+	/>
+{/if}
 
 <!-- <Button
 	on:click|once={(event) => {
