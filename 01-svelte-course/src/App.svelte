@@ -26,6 +26,7 @@
 			completed: true,
 		},
 	];
+	// $: console.log(todos);
 
 	function handleAddTodo(event) {
 		event.preventDefault();

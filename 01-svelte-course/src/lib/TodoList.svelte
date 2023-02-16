@@ -47,6 +47,7 @@
 <div class="todo-list-wrapper">
 	<ul>
 		{#each todos as { id, title, completed } (id)}
+			<!-- {@debug id, title} -->
 			<!-- {@const number = index + 1} -->
 			<li>
 				<label>
