@@ -3,8 +3,17 @@
 <script>
 	import Button from './Button.svelte';
 	import { createEventDispatcher } from 'svelte';
+
 	export let todos = [];
+	export const readonly = 'read only';
+	export function clearInput() {
+		inputText = '';
+	}
+	export function focusInput() {
+		input.focus();
+	}
 	let inputText = '';
+	let input;
 
 	const dispatch = createEventDispatcher();
 
@@ -62,7 +71,7 @@
 				inputText = e.currentTarget.value;
 			}}
 		/> -->
-		<input bind:value={inputText} />
+		<input bind:this={input} bind:value={inputText} />
 		<Button type="submit" disabled={!inputText}>Add</Button>
 	</form>
 </div>
