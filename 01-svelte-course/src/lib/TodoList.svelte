@@ -9,23 +9,24 @@
 		beforeUpdate,
 		afterUpdate,
 	} from 'svelte';
+	import FaRegTrashAlt from 'svelte-icons/fa/FaRegTrashAlt.svelte';
 
-	onMount(() => {
-		console.log('Mounted');
-		return () => {
-			console.log('Destroyed 2');
-		};
-	});
+	// onMount(() => {
+	// 	console.log('Mounted');
+	// 	return () => {
+	// 		console.log('Destroyed 2');
+	// 	};
+	// });
 
-	onDestroy(() => {
-		console.log('Destroyed');
-	});
+	// onDestroy(() => {
+	// 	console.log('Destroyed');
+	// });
 
-	beforeUpdate(() => {
-		if (listDiv) {
-			console.log(listDiv.offsetHeight);
-		}
-	});
+	// beforeUpdate(() => {
+	// 	if (listDiv) {
+	// 		console.log(listDiv.offsetHeight);
+	// 	}
+	// });
 
 	afterUpdate(() => {
 		if (autoscroll) listDiv.scrollTo(0, listDivScrollHeight);
@@ -34,6 +35,10 @@
 
 	export let todos = [];
 	let prevTodos = todos;
+	let inputText = '';
+	let input, listDiv, autoscroll, listDivScrollHeight;
+
+	const dispatch = createEventDispatcher();
 
 	$: {
 		autoscroll = todos.length > prevTodos.length;
@@ -46,10 +51,6 @@
 	export function focusInput() {
 		input.focus();
 	}
-	let inputText = '';
-	let input, listDiv, autoscroll, listDivScrollHeight;
-
-	const dispatch = createEventDispatcher();
 
 	function handleAddTodo() {
 		const isNotCancelled = dispatch(
@@ -81,26 +82,38 @@
 <div class="todo-list-wrapper">
 	<div class="todo-list" bind:this={listDiv}>
 		<div bind:offsetHeight={listDivScrollHeight}>
-			<ul>
-				{#each todos as { id, title, completed } (id)}
-					<!-- {@debug id, title} -->
-					<!-- {@const number = index + 1} -->
-					<li>
-						<label>
-							<input
-								on:input={(event) => {
-									event.currentTarget.checked = completed;
-									handleToggleTodo(id, !completed);
-								}}
-								type="checkbox"
-								checked={completed}
-							/>
-							{title}
-						</label>
-						<button on:click={() => handleRemoveTodo(id)}>Remove</button>
-					</li>
-				{/each}
-			</ul>
+			{#if todos.length === 0}
+				<p class="no-items-text">No todos yet</p>
+			{:else}
+				<ul>
+					{#each todos as { id, title, completed } (id)}
+						<!-- {@debug id, title} -->
+						<!-- {@const number = index + 1} -->
+						<li class:completed>
+							<label>
+								<input
+									on:input={(event) => {
+										event.currentTarget.checked = completed;
+										handleToggleTodo(id, !completed);
+									}}
+									type="checkbox"
+									checked={completed}
+								/>
+								{title}
+							</label>
+							<button
+								class="remove-todo-button"
+								arial-label="Remove todo: {title}"
+								on:click={() => handleRemoveTodo(id)}
+							>
+								<span style:width="10px" style:display="inline-block"
+									><FaRegTrashAlt /></span
+								>
+							</button>
+						</li>
+					{/each}
+				</ul>
+			{/if}
 		</div>
 	</div>
 	<form class="add-todo-form" on:submit|preventDefault={handleAddTodo}>
@@ -110,7 +123,7 @@
 				inputText = e.currentTarget.value;
 			}}
 		/> -->
-		<input bind:this={input} bind:value={inputText} />
+		<input bind:this={input} bind:value={inputText} placeholder="New Todo" />
 		<Button type="submit" disabled={!inputText}>Add</Button>
 	</form>
 </div>
