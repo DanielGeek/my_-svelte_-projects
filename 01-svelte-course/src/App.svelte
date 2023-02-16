@@ -37,13 +37,17 @@
 		];
 	}
 
+	function handleRemoveTodo(event) {
+		todos = todos.filter((t) => t.id !== event.detail.id);
+	}
+
 	// const props = {
 	//   maxCount: 10,
 	//   initialCount: 5
 	// };
 </script>
 
-<TodoList {todos} on:addtodo={handleAddTodo} />
+<TodoList {todos} on:addtodo={handleAddTodo} on:removetodo={handleRemoveTodo} />
 
 <!-- <Button
 	on:click|once={(event) => {
