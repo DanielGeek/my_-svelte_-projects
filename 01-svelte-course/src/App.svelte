@@ -24,22 +24,19 @@
 			completed: true,
 		},
 	];
-	$: console.log(todos);
+
+	function handleAddTodo(event) {
+		event.preventDefault();
+		console.log(event.detail.title);
+	}
+
 	// const props = {
 	//   maxCount: 10,
 	//   initialCount: 5
 	// };
 </script>
 
-<h2>{todos.length} Todos</h2>
-<TodoList bind:todos />
-
-<button
-	on:click={() => {
-		todos = [];
-	}}
-	>Update todos
-</button>
+<TodoList {todos} on:addtodo={handleAddTodo} />
 
 <!-- <Button
 	on:click|once={(event) => {
