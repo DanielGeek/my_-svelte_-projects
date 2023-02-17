@@ -39,6 +39,7 @@
 	export let error = null;
 	export let isLoading = false;
 	export let disableAdding = false;
+	export let disabledItems = [];
 
 	let prevTodos = todos;
 	let inputText = '';
@@ -103,6 +104,7 @@
 							<li class:completed>
 								<label>
 									<input
+										disabled={disabledItems.includes(id)}
 										on:input={(event) => {
 											event.currentTarget.checked = completed;
 											handleToggleTodo(id, !completed);
@@ -113,6 +115,7 @@
 									{title}
 								</label>
 								<button
+									disabled={disabledItems.includes(id)}
 									class="remove-todo-button"
 									arial-label="Remove todo: {title}"
 									on:click={() => handleRemoveTodo(id)}
@@ -196,6 +199,10 @@
 						right: 10px;
 						cursor: pointer;
 						display: none;
+						&:disabled {
+							opacity: 0.4;
+							cursor: not-allowed;
+						}
 						:global(svg) {
 							fill: #db1414;
 						}
