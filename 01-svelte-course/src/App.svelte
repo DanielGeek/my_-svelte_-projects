@@ -78,13 +78,34 @@
 		disabledItems = disabledItems.filter((itemId) => itemId !== id);
 	}
 
-	function handleToggleTodo(event) {
-		todos = todos.map((todo) => {
-			if (todo.id === event.detail.id) {
-				return { ...todo, completed: event.detail.value };
+	async function handleToggleTodo(event) {
+		const id = event.detail.id;
+		const value = event.detail.value;
+		if (disabledItems.includes(id)) return;
+		disabledItems = [...disabledItems, id];
+		await fetch(`https://jsonplaceholder.typicode.com/todos/${id}`, {
+			method: 'PATCH',
+			body: JSON.stringify({
+				completed: value,
+			}),
+			headers: {
+				'Content-type': 'application/json; charset=UTF-8',
+			},
+		}).then(async (response) => {
+			if (response.ok) {
+				const updatedTodo = await response.json();
+				todos = todos.map((todo) => {
+					if (todo.id === id) {
+						return updatedTodo;
+					}
+					return { ...todo };
+				});
+			} else {
+				alert('An error has ocurred.');
 			}
-			return { ...todo };
 		});
+
+		disabledItems = disabledItems.filter((itemId) => itemId !== id);
 	}
 
 	// const props = {
