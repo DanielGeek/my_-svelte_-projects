@@ -1,7 +1,7 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async () => {
+export const GET: RequestHandler = async ({ url, params, cookies }) => {
 	const products = await (await import('$lib/dummy-products.json')).default;
 
 	// throw error(401, 'Not authorized');
