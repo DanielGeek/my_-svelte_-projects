@@ -1,18 +1,16 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
-export const GET: RequestHandler = async ({ url, params, cookies }) => {
-	const products = await (await import('$lib/dummy-products.json')).default;
+export const GET: RequestHandler = async ({ fetch }) => {
+	const response = await fetch('https://dummyjson.com/products');
 
-	// throw error(401, 'Not authorized');
-
-	// return new Response(JSON.stringify({ error: 'You are not authorized!' }), {
-	// 	status: 401
-	// });
-
-	return json(products, {
-		status: 200
-	});
+	if (response.ok) {
+		const resJSON = await response.json();
+		return json(resJSON, {
+			status: 200
+		});
+	}
+	throw error(response.status, response.statusText);
 };
 
 export const POST: RequestHandler = async ({ request }) => {
