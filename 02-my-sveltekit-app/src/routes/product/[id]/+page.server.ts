@@ -2,6 +2,7 @@ import { error, redirect } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async ({ params }) => {
+	console.log('Product Load');
 	const products = await (await import('$lib/dummy-products.json')).default;
 	const product = products.products.find((p) => p.id === +params.id);
 

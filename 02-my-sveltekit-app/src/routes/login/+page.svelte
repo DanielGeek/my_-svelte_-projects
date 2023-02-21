@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
+	import { goto, invalidateAll } from '$app/navigation';
 
 	let username = '';
 	let password = '';
@@ -11,7 +11,11 @@
 		});
 		const resJSON = await response.json();
 		if (response.ok) {
-			goto('/');
+			// goto('/', {
+			// 	invalidateAll: true
+			// });
+			// to refresh the page with the new data
+			invalidateAll();
 		} else {
 			alert(resJSON.message);
 		}
