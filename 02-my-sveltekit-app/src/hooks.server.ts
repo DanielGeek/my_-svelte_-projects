@@ -1,4 +1,4 @@
-import type { Handle, HandleFetch } from '@sveltejs/kit';
+import type { Handle, HandleFetch, HandleServerError } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
 
 // this code run in every request
@@ -26,4 +26,14 @@ export const handleFetch: HandleFetch = ({ request, event, fetch }) => {
 		}
 	}
 	return fetch(request);
+};
+
+export const handleError: HandleServerError = ({ error, event }) => {
+	console.log('This is coming from handleError.');
+	console.log(error, event);
+
+	return {
+		message: 'An unexpected error has occurred.',
+		code: 'UNEXPECTED'
+	};
 };
