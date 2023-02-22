@@ -1,6 +1,5 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import { secret } from './secrets.server';
 // import { env } from '$env/dynamic/private';
 // import { env as publicEnv } from '$env/dynamic/public';
 // import { API_KEY, TEST } from '$env/static/private';
