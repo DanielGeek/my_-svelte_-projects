@@ -12,7 +12,7 @@
 </svelte:head> -->
 
 <img src={product?.thumbnail} alt={product?.title} />
-
+<div style:height="1000px" />
 <h1>{product?.title}</h1>
 
 <p>{product?.description}</p>
