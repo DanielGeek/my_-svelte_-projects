@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ fetch }) => {
-	const response = await fetch('https://dummyjson.com/products');
+	const response = await fetch('https://dummyjson.com/products?limit=6');
 
 	if (response.ok) {
 		const resJSON = await response.json();
