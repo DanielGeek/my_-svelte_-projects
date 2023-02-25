@@ -1,8 +1,8 @@
 import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-
+import { API_URL } from '$env/static/private';
 export const GET: RequestHandler = async ({ fetch }) => {
-	const response = await fetch('https://dummyjson.com/products?limit=6');
+	const response = await fetch(`${API_URL}/products?limit=6`);
 
 	if (response.ok) {
 		const resJSON = await response.json();
