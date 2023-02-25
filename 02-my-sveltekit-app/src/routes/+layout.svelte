@@ -53,6 +53,10 @@
 	</form>
 {/if}
 
+<form method="GET" action="/search">
+	<input name="q" />
+</form>
+
 <slot />
 
 {#if !data.user && $page.url.pathname !== '/login'}
