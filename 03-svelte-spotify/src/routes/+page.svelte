@@ -51,11 +51,7 @@
 			<div class="right">
 				<h2 class="section-title">{section.title}</h2>
 			</div>
-			<div class="left">
-				<Button element="a" href={section.path} variant="outline"
-					>See All <span class="visually-hidden">{section.title}</span></Button
-				>
-			</div>
+			
 		</div>
 		<div class="grid-items">
 			{#each section.items as item}
@@ -63,6 +59,11 @@
 					<Card {item} />
 				</div>
 			{/each}
+			<div class="left">
+				<Button element="a" href={section.path} variant="outline"
+					>See All <span class="visually-hidden">{section.title}</span></Button
+				>
+			</div>
 		</div>
 	</section>
 {/each}

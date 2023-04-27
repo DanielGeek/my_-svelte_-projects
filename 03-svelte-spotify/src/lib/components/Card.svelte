@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { Music } from 'lucide-svelte';
+
 	type AlbumType = SpotifyApi.AlbumObjectFull | SpotifyApi.AlbumObjectSimplified;
 	type PlaylistType = SpotifyApi.PlaylistObjectFull | SpotifyApi.PlaylistObjectSimplified;
 	type ArtistType = SpotifyApi.ArtistObjectFull;
+
 	export let item: AlbumType | PlaylistType | ArtistType;
 </script>
 
