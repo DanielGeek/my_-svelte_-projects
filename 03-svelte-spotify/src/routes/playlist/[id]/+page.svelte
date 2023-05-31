@@ -12,6 +12,7 @@
     $: color = data.color;
     $: playlist = data.playlist;
     $: tracks = data.playlist.tracks;
+    $: isFollowing = data.isFollowing;
     $: currentPage = $page.url.searchParams.get('page') || 1;
 
     $: console.log(playlist);
