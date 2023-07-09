@@ -38,9 +38,11 @@
 	"type": "module",
 	"dependencies": {
 		"@fontsource/metropolis": "^4.5.3",
+		"@types/micromodal": "^0.3.3",
 		"@types/spotify-api": "0.0.19",
 		"@unsass/breakpoint": "^2.2.0",
 		"lucide-svelte": "^0.129.0",
+		"micromodal": "^0.4.10",
 		"modern-normalize": "^1.1.0",
 		"nprogress": "^0.2.0",
 		"pkce-gen": "^1.1.0",
